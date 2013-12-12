@@ -1,4 +1,3 @@
-
 /*
 constructor function - A method that constructs an object.
 Eg: Object(), Number(), String(), Function() - convention: Use Uppercase names.
@@ -16,10 +15,19 @@ this.property1 = "something";
 Invocation context : Who is calling MyCustom?
 */
 MyCustom(); //-> 'property1' will go into global/parent scope (eg: console).
-same as above:
-var x = MyCustom(); //although like alias, x is undefined.
+//same as above:
 
+var x = MyCustom(); //although like alias, x is undefined.
 var mc = new MyCustom(); //-> 'property1' will go into the caller scope 'mc'
+//this is called instantiating a constructor function (so much not for JAVA/C++ programmers)
+/* Perspective
+  replace the function keyword with class and it looks familiar.
+  class MyCustom(){
+    this.property1 = "something";
+  } 
+  var cl = new MyCustom();
+*/
+
 
 //alias
 var mycust = function MyCustom1(val){
