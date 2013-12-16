@@ -79,5 +79,80 @@ var Area = {
   rectangle: function(){}
 }
 //cannot do 'new' on Area - errors since Area is not a function
+//new keyword always returns an object.
+//A native like implementation of String() as MString()
+/*
+function MString(val){
+  if(this instanceof MString){
+    var v = val;
+    this.tostringy = function(){ console.log("stringy" + v); }
+  }else{
+    return val;
+  }
+}
+*/
+
+// --- Primitives are stored as literals. referring to them will only make copy.
+//primitives are equal by value
+
+var string1 = "1";
+var string2 = "1";
+if(string1 === string2) //true
+
+//complex objects ( those created with new() ) are equal by reference
+var numObj1 = new Number(10);
+var numObj2 = numObj1;
+
+if(numObj1 === numObj2 ) //true
+numObj2 = 10;
+
+if(numObj1 === numObj2 ) //false
+
+/*When a primitive value is used as if it were an object created by a constructor, 
+JavaScript converts it to an object in order to respond to the expression at hand, 
+but then discards the object qualities and changes it back to a primitive value
+*/
+
+
+var myNumber = new Number('23');
+var myNumberL = 23;
+
+myNumber.constructor === Number,
+myNumberL.constructor === Number,
+
+/* CATCH
+instanceof operator will return false when dealing with primitive values 
+that leverage object wrappers (e.g., 'foo' instanceof String // returns false).
+*/
+
+/*
+unlike primitive values that would copy a value, objects (a.k.a. complex values) 
+are stored by reference. As such, the reference (a.k.a. address) is copied, 
+but not the actual value. This means that objects are not copied at all.
+
+CATCH:
+When the values String(), Number(), and Boolean() are created using the new keyword, 
+the values continue to be stored/copied by value. So, even though primitive values 
+can be treated like complex values, 
+they do not take on the quality of being copied by reference.
+
+*/
+
+var objectFoo = {same: 'same'};
+var objectBar = {same: 'same'};
+
+console.log(objectFoo === objectBar); //false, because its by reference.
+
+// All OBJECTS ARE BY REFERENCE.
+
+var myFunction = new Function("x", "y", "return x * y");
+typeof(myFunction);
+//"function"
+
+var myDate = new Date()
+typeof(mydate); //logs Object
+
+
+
 
 
