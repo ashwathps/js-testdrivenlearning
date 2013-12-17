@@ -208,3 +208,79 @@ of the instance’s constructor function.
 var myObject = {foo: 'value'};
 console.log('toString' in myObject); // logs true
 
+
+var cody = {
+    age : 23,
+    gender : 'male'
+};
+
+for (var key in cody) { // key is a variable used to represent each property name
+   // avoid properties inherited from the prototype chain
+    if(cody.hasOwnProperty(key)) {
+        console.log(key);
+    }
+}
+
+/*Only properties that are enumerable (i.e., available when looping over an object’s properties) 
+show up with the for in loop. For example, the constructor property will not show up. 
+It is possible to check which properties are enumerable with the propertyIsEnumerable() method.
+*/
+
+//The Object() constructor function takes one optional parameter.
+
+console.log(new Object('foo'));
+console.log(new Object(1));
+console.log(new Object([]));
+console.log(new Object(function() {}));
+console.log(new Object(true));
+console.log(new Object(/\bt[a-z]+\b/));
+
+/* Creating a string, number, array, function, boolean, and regex object instance 
+via the Object() constructor is really never done. I am just demonstrating that  
+it can be done */
+
+var addFunction = new Function('num1', 'num2', 'return num1 + num2');
+
+/* Alternately, a single comma-separated string with arguments can be
+  the first parameter of the constructor, with the function body following. */
+var timesFunction = new Function('num1,num2', 'return num1 * num2');
+
+//No closure is created when invoking the Function() constructor directly.
+
+//The arguments object has a property called callee, which is a reference to the function 
+//currently executing.
+
+var foo = function foo() {
+   console.log(arguments.callee); // logs foo()
+   /* callee could be used to invoke recursively the foo function 
+   (e.g., arguments.callee()) */
+}();
+
+/*
+The arguments.length property beginning with JavaScript 1.4 is deprecated, and the 
+number of arguments sent to a function can be accessed from the length property of the 
+function object. So, moving forward, you can get the length value by leveraging the callee 
+property to first gain reference to the function being invoked (i.e., arguments.callee.length).*/
+
+/*
+
+A function can be defined in three different ways: a function constructor, a function statement, or a function expression. Below, I demonstrate each variation.
+
+//function constructor: the last parameter is the function logic, everything before it is a parameter 
+var addConstructor = new Function('x', 'y', 'return x + y');
+
+// function statement
+function addStatement(x, y) {
+   return x + y;
+}
+
+// function expression
+var addExpression = function(x, y) {
+    return x + y;
+};
+
+
+Fourth type of definition for functions, called the “named function expression.” 
+A named function expression is simply a function expression that also 
+contains a name (e.g., var add = function add(x, y) {return x+y}).
+*/
