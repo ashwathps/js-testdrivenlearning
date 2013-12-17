@@ -100,3 +100,55 @@ var foo = {
 }
 foo.func1(function(){console.log(this);});
 
+//to resolve this, helps to understand why apply n call are needed although functions can be invoked
+// by function statment.
+//Controlling the Value of this Using call() or apply()
+
+var myObject1 = {};
+
+var myFunction1 = function(param1, param2) {
+   // set via call() 'this' points to myObject when function is invoked
+   this.foo = param1;
+   this.bar = param2;
+   console.log(this) // logs Object {foo = 'foo', bar = 'bar'}
+};
+
+myFunction1.call(myObject1, 'foo', 'bar'); /* invoke function, set this value to 
+                                         myObject */
+
+//understanding invocation context.
+var Person = function(name) {
+   this.name = name || 'john doe'; // this will refer to the instance created
+}
+
+var cody = new Person('Cody Lindley'); /* create an instance, 
+                                       based on Person constructor */
+
+console.log(cody.name); // logs 'Cody Lindley'
+console.log(myObject1) // logs Object {foo = 'foo', bar = 'bar'}
+
+var c = Person('me');
+c.name; //undefined
+window.name; //me
+
+//Understanding name resolution via prototype chain again
+
+var Person = function(x){
+    if(x){this.fullName = x};
+};
+
+Person.prototype.whatIsMyFullName = function(){
+    return this.fullName1; // 'this' refers to the instance created from Person()
+}
+
+var v = new Person('ashwath');
+//undefined
+v.whatIsMyFullName()
+//undefined
+Object.prototype.fullName1 = 'window name';
+//"window name"
+v.whatIsMyFullName()
+//"window name"
+
+
+
