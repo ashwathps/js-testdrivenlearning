@@ -152,7 +152,42 @@ typeof(myFunction);
 var myDate = new Date()
 typeof(mydate); //logs Object
 
+//typeof operator on Primitive Vs Complex object
+var primitiveString1 = "string";
+var primitiveString2 = String('string');
 
+console.log(typeof myNull); // logs object? WHAT? Be aware...
+console.log(typeof myUndefined); // logs undefined
+console.log(typeof primitiveString1, typeof primitiveString2); 
+  // logs string string
+  
+var myNumber = new Number(23);
+console.log(typeof myNumber); // logs object
+
+//Objects in jS are dynamic, hence mutable. Adding new properties can be done via the prototype chain
+// or via direct addition to the instance.
+
+/* augment the built-in String constructor Function() with the augmentedProperties 
+property */
+String.augmentedProperties = [];
+
+if (!String.prototype.trimIT) { // if the prototype does not have trimIT() add it
+   String.prototype.trimIT = function() {
+       return this.replace(/^\s+|\s+$/g, '');
+   }
+
+   // now add trimIT string to the augmentedProperties array
+   String.augmentedProperties.push('trimIT');
+}
+var myString = '  trim me  ';
+console.log(myString.trimIT()); /* invoke our custom trimIT string method, 
+                                logs 'trim me' */
+
+console.log(String.augmentedProperties.join()); // logs 'trimIT'
+
+
+var foo = [{foo: [{bar: {say: function() {return 'hi';}}}]}];
+console.log(foo[0].foo[0].bar.say()); // logs 'hi'
 
 
 
