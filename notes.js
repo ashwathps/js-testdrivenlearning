@@ -284,3 +284,16 @@ Fourth type of definition for functions, called the “named function expression
 A named function expression is simply a function expression that also 
 contains a name (e.g., var add = function add(x, y) {return x+y}).
 */
+
+//Nested function
+
+var foo = function() {
+   var bar = function() {
+       var goo = function() {
+          console.log(this); // logs reference to head window object
+       }();
+   }();
+}();
+
+//the value of this for nested 
+//functions will be the head object (e.g., window object in a web browser)
