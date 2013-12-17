@@ -165,7 +165,7 @@ var myNumber = new Number(23);
 console.log(typeof myNumber); // logs object
 
 //Objects in jS are dynamic, hence mutable. Adding new properties can be done via the prototype chain
-// or via direct addition to the instance.
+// or via direct addition to the instance. (means, instance properties)
 
 /* augment the built-in String constructor Function() with the augmentedProperties 
 property */
@@ -184,10 +184,27 @@ console.log(myString.trimIT()); /* invoke our custom trimIT string method,
                                 logs 'trim me' */
 
 console.log(String.augmentedProperties.join()); // logs 'trimIT'
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//Constructor instances have the property 'constructor' that points to their constructor function
 
+//Verify via the instanceOf operator. not for primitive objects.
+// instanceof really only works with complex objects and instances created from 
+// constructor functions that return objects.
 
+//encapsulation
 var foo = [{foo: [{bar: {say: function() {return 'hi';}}}]}];
 console.log(foo[0].foo[0].bar.say()); // logs 'hi'
 
+/*All object instances have a property that is a secret link [a.k.a. __proto__] 
+to the constructor function that created the instance. This secret link can be 
+leveraged to grab the constructor function, specifically the prototype property 
+of the instance’s constructor function.
+*/
 
+//to check if a property has come from the instance or from the prototype chain
+// use hasOwnProperty() method.
+//if we need to check existence of any property (whether proto chain or instance property), use 'in'
+
+var myObject = {foo: 'value'};
+console.log('toString' in myObject); // logs true
 
