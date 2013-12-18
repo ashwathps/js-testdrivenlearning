@@ -1,4 +1,4 @@
 js-testdrivenlearning
 =====================
 
-A test drive approach to learning javascript. Inspired by js-assessment.
+A test driven approach to learning javascript. Inspired by js-assessment.
