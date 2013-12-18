@@ -150,7 +150,72 @@ Object.prototype.fullName1 = 'window name';
 v.whatIsMyFullName()
 //"window name"
 
+//SCOPE
+/*three types of scope: 
+//global scope, local scope (sometimes referred to as “function scope”), and eval scope.
+//The global scope is the last stop in the scope chain.
+
+Functions that contain functions create stacked execution scopes. 
+These stacks which are chained together are often referred to as the scope chain. (something like the prototype chain)
+
+NO BLOCK Scope.
+
+The scope chain is decided based on the location of a function 
+during definition, not during invocation. 
+This is also called lexical scoping
+
+scope chain is created before you invoke a function. Because of this, we can create closures
+*/
+
+// use var inside functions to avoid scope conflicts with global.
+
+var parentFunction = function() {
+   var foo = 'foo';
+   return function() { // anonymous function being returned
+       console.log(foo); // logs 'foo'
+   }
+}
+
+// nestedFunction refers to the nested function returned from parentFunction
+var nestedFunction = parentFunction();
+
+nestedFunction(); /* logs foo because the returned function accesses foo 
+                  via the scope chain */
+                  
+
+//For  more info
+// http://jibbering.com/faq/notes/closures/
+// http://kangax.github.io/nfe/
+
+// Prototype Chain
+
+//prototype property is an object created by JavaScript for every Function() instance. 
+//Specifically, it links object instances created with the new keyword back to the 
+//constructor function that created them
+
+// at the time of property name resolution, it searches the proto chain via constructor.
+//  prototype object is created for every function, regardless of whether you intend to 
+//  use that function as a constructor.
 
 
+/*
 
+All functions are created from a Function() constructor, even if you do not directly 
+invoke the Function() constructor (e.g., var add = new Function('x', 'y', 'return x + z');) 
+and instead use the literal notation (e.g., var add = function(x,y){return x + z};).
 
+When a function instance is created, it is always given a prototype property, 
+which is an empty object. Below, we define a function called myFunction, 
+then we access the prototype property, which is simply an empty object.
+*/
+
+var myFunction = function() {};
+console.log(myFunction.prototype); // logs object{}
+console.log(typeof myFunction.prototype); // logs 'object'
+/*
+
+Prototype property is coming from the Function() constructor. 
+It is only once we intend to use our function as a user-defined constructor function that the 
+prototype property is leveraged, but this does not change the fact that the Function() 
+constructor gives each instance a prototype property.
+*/
