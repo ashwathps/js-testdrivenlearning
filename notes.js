@@ -50,6 +50,27 @@ return {property2: val}
 //custom or comples objects cant be done ?
 var f = function(x, y){ return x+ y; }
 //this is similar to alias, could be used as new f();, or just f();
+
+/* f.name outputs ""
+   c.name outputs "MyCustom2"
+   
+   ---------------Combined style------------
+   var xyz = function abc(){}; //abc goes undefined in IE
+   
+   ------- best for all browsers -------
+   function abc(){}; // function dec
+   var xyz = abc
+   
+   Another reason for named function is for recursion & shortnamed calls
+   although self reference can be done via 'arguments.callee', 
+   which is still relatively long, and not supported in the strict mode.
+   
+   This is a function expression:
+    var xyz = function(){};
+    xyz here is defined from the point of assignment:
+    
+    http://kangax.github.io/nfe/
+*/
 /*
 
 When using literal values for string, number, and boolean, an actual complex object is never 
