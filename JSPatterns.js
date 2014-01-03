@@ -1,4 +1,3 @@
-
 /*
 1.   Function argument pattern
 
@@ -31,6 +30,13 @@
     
     browser is typically a single threaded (hence the webworkers)
     Long running JS can cause poor response. so split up using setTimeout
-    
+    setInterval has problems: 
+    after the 1st setInterval finishes, it is pushed to the timer queue. 
+    If the 1st is waiting for an AJAX response, then multiple setInterval functions will be queued 
+    for processing the AJAX. 
+
+4.1.1    Recursive setTimeout Pattern
+    In that sense, setTimeout is better since the code in in control of the next 
+    setTimeout call (after the AJAX response)
 
 */
