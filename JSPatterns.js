@@ -122,3 +122,19 @@ proposal
             import {pi, sum} from math
             alert(sum(1,2));
 */
+
+/*
+pub/sub pattern
+
+define(function(){
+    
+    return {
+        pub: function(){
+            var arg1 = [].slice.call(arguments, 1);
+        },
+        sub: function(){}
+    }
+
+});
+
+*/
