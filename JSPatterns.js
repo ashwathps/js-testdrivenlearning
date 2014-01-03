@@ -75,4 +75,31 @@
             another: <function....>
         }
         
+        AMD with RequireJS
+        
+        Modules on browser do not have the same 'module' of node.js way to load libraries.
+        Hence RequireJS (doesnt impl the commonJS actually). So how does it?
+        it defines a structure / tree of dependecnies.
+        
+        Browser friendly & an be used on node.js too.
+        however, its problematic when minification
+        
+        file: main.js
+        //order of dependencies matter here in []
+        require(['jquery', 'twitter/api'], function($, api){
+            &(document).ready(function(){
+                //logic
+                api.timeline("dsad");
+            });
+        } ); 
+        //attempts to locate that from the list of script files specified, doesnt do any commonJS
+        
+        file: twitter/api.js
+        //something like a module.exports but on the browser environment.
+        define(['jquery'], function($) { //dependency on jquery
+            return {
+                timeline: function(u){ return u; }
+            }
+        
+        } );
 */
