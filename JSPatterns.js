@@ -62,6 +62,8 @@
         //blah
         }
         
+        //node.js uses commonJS way and browser based uses requirJS way.
+        
         //node.js runtime will copy & run logic.js code inside a function, an implicit closure
         //hence the error when " require'd "
         //use module object exposed globally by node.js
@@ -84,6 +86,8 @@
         Browser friendly & an be used on node.js too.
         however, its problematic when minification
         
+        can b used to load css file too.
+        
         file: main.js
         //order of dependencies matter here in []
         require(['jquery', 'twitter/api'], function($, api){
@@ -96,10 +100,25 @@
         
         file: twitter/api.js
         //something like a module.exports but on the browser environment.
+        //expose an API via 'define'
         define(['jquery'], function($) { //dependency on jquery
             return {
                 timeline: function(u){ return u; }
             }
         
         } );
+*/
+
+/* 
+ECMA script vNext (Harmony) - introduce new keywords and new syntax - under review
+
+provide module support @ language level.
+proposal
+
+            module math{
+                export function sum(x, y) {}
+                export var pi = 3.14;
+            }
+            import {pi, sum} from math
+            alert(sum(1,2));
 */
