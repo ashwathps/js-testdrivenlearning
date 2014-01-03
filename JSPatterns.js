@@ -1,5 +1,4 @@
 
-
 /*
 1.   Function argument pattern
 
@@ -21,5 +20,17 @@
 4.  Timer pattern
 
     setInterval & setTimeout
-*/
+    dont-use (inconsistent impl on diff browsers)
+    if timeout val < 4ms its pushed to 4ms (min)
+    
+    timers wont start until the outermost function has finished execution.
+    
+    timer stack can get pre-empted by the response from a long running/pending function call.
 
+4.1.  Async execution pattern
+    
+    browser is typically a single threaded (hence the webworkers)
+    Long running JS can cause poor response. so split up using setTimeout
+    
+
+*/
