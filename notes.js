@@ -71,6 +71,21 @@ var f = function(x, y){ return x+ y; }
     
     http://kangax.github.io/nfe/
 */
+
+//function hoisting
+
+object2("hello"); //works as it is hoisted already
+
+object1("hello"); //doesnt work, undefined is not a function. like c(); in the above example.
+var object1 = function(msg){
+    console.log(msg + " from object1 ");   
+}
+
+//gets hoisted, or pollutes the parent scope.
+function object2(msg){
+    console.log(msg + " from object2 ");
+}
+
 /*
 
 When using literal values for string, number, and boolean, an actual complex object is never 
