@@ -71,8 +71,41 @@ fn.call(thisobject) / fn.apply(thiscontextobject)
 //arguments is NOT an array
 //this is ducktyping, just because arguments has length and index, it cannot be an array. :)
 
+//closure examples
 
+function spinner(){
+var i = 0;
+return {
+	up: function(){
+		++i;
+		return i;
+	},
+	down: function(){
+		--i;
+		return i;
+	}
+}
+}
+//////////////////////////////////////
 
+function isPrime(){
+
+	//check if divisible by number < n/2
+	var arr = {};
+	return function(n){
+		arr[n] = true;
+		if(typeof arr[n] !== undefined){
+		}
+		else{
+			for(var i = 2; i <= n/2 ; ++i)
+			{
+				if( n % i === 0) arr[n] = false;
+			}
+		}
+		return arr;
+	}
+	
+}
 
 
 
