@@ -15,7 +15,7 @@ highscalability.com
 
 function parseJSON(asString){
     return new Function("return " + asString)();
-}
+}	
 
 //abstract equality comparison Algo.
 1 == "1" if u want the result to be true
@@ -49,7 +49,7 @@ function add(a1, a2){
 		result += parseArg(arguments[i]);
 	}
 	//OR
-	return arguments.length <= 1 ? parseArg(arguments[0]) : parseArg(arguments[0]) + parseArg([].slice.call(arguments, 1));
+	return arguments.length <= 1 ? parseArg(arguments[0]) : parseArg(arguments[0]) + add([].slice.call(arguments, 1));
 	/*var n1 = a1, n2 = a2;
 	if(a1 === undefined) n1 = 0;
 	if(a2 === undefined) n2 = 0;
