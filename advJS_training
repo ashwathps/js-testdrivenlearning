@@ -1,0 +1,27 @@
+Datatypes, number is evaluated by approximation, no definite 
+x = 1, x -=0.05
+js alt, dart, coffescript, typescript, 
+
+JS is a Functional+Object based
+
+var x = {}                                                      |                            var f = function(){}
+var x = new Object()                                        |                            var f = new Function("a", "b", "body")
+x.id = 100                                                      |                           f.id = 100
+x.callme = function();                                        |                              f.callme = function()
+x.callme()                                                       |                              f.callme()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
