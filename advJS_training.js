@@ -107,6 +107,22 @@ function isPrime(){
 	
 }
 
+//above isPrime can be used for any function, pass fn as the arg. and call fn from line 100 above.
+// Decorator pattern
+// var memorizeAdd = memorize(fn);
+// memorizeAdd(10, 20, 30);
+/////////////
 
+function whoami(){
+	console.log(" I am " + this.name);
+}
+var emp = {
+	name: "ashwath"
+};
+
+whoami = whoami.bind(emp);
+
+}
+}
 
 
