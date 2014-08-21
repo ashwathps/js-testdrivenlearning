@@ -125,4 +125,51 @@ whoami = whoami.bind(emp);
 }
 }
 
+//protect id and expose setter and getters
+function Employee(_id){
+	//console.log("Constructor = " + this.constructor + " Callee is " + arguments.callee);
+	if(this.constructor !== Employee) //arguments.callee)
+		return new Employee(id);
+	var id = 0;
+	//cannot do protoype and hide, bcos inside the protype, "this" cannot access id.
+	/*Employee.prototype.setid = function(_id){
+	 if(_id > 0) id = _id;
+	}
+	Employee.prototype.getid = function(){
+		return id;
+	}*/
+	this.id__ = function(){
+			if(arguments.length === 0) return id;
+			if(arguments[0] > 0) id = _id;
+	}
+	this.id__(_id);
+}
+
+
+//protypal inheritance
+//set base at time of creation.
+//prototype hopping, to resolve attributes during access (read), write will create in the immediate level. base object unalteren
+
+var baseObj = {
+	id: 100,
+	display: function(){
+		console.log(this.id, this.name);
+	}
+}
+
+function Employee(name){
+ this.name = name;
+}
+
+Employee.prototype = baseObj;
+	Object {id: 100, display: function}
+var e = new Employee("a");
+
+e.id
+100
+e.name
+"a"
+
+//add method at prototype level instead of object level, reduce creation of same method for every object creation (function is also an object)
+
 
